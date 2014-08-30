@@ -48,4 +48,14 @@ public class CarTest {
 		assertEquals("size must be between 2 and 14", constraintViolations
 				.iterator().next().getMessage());
 	}
+	
+	@Test
+	public void testSinglePropertyValidation() {
+		Car car = new Car("Morris", "D", 4);
+		Set<ConstraintViolation<Car>> constraintViolations = validator
+				.validateProperty(car, "licensePlate");
+		assertEquals(1, constraintViolations.size());
+		assertEquals("size must be between 2 and 14", constraintViolations
+				.iterator().next().getMessage());
+	}
 }
